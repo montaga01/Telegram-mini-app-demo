@@ -17,6 +17,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
+    position: relative; /* لتمكين وضع زر الإغلاق */
 }
 
 h1 {
@@ -39,6 +40,8 @@ button {
     font-size: 16px;
     margin: 5px;
     transition: background-color 0.3s ease;
+    width: fit-content; /* للسماح للأزرار بأخذ عرض المحتوى */
+    display: inline-block; /* لترتيب الأزرار جنبًا إلى جنب */
 }
 
 button:hover {
@@ -48,4 +51,70 @@ button:hover {
 #user-info {
     font-weight: bold;
     color: #555;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.small-text {
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* تنسيقات الشاشات المخفية */
+.screen {
+    display: none; /* إخفاء الشاشات افتراضياً */
+}
+
+.screen.active {
+    display: block; /* إظهار الشاشة النشطة */
+}
+
+.hidden {
+    display: none;
+}
+
+/* أزرار الرجوع */
+.back-button {
+    background-color: #6c757d; /* لون رمادي */
+    margin-top: 20px;
+}
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* تنسيق حقول الإدخال والقوائم المنسدلة */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: right; /* محاذاة النص لليمين */
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* لضمان أن العرض يشمل الحشوة */
+    text-align: right; /* محاذاة النص لليمين */
+    direction: rtl; /* لجعل النص يكتب من اليمين لليسار */
+}
+
+/* زر إغلاق التطبيق العائم */
+.floating-close-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #dc3545; /* لون أحمر للإغلاق */
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.floating-close-button:hover {
+    background-color: #c82333;
 }
