@@ -3,17 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تطبيق تيليجرام التجريبي</title>
+    <title>تطبيقنا التعليمي</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>مرحباً بك في تطبيقنا المصغر! 👋</h1>
-        <p>هذا تطبيق تجريبي بسيط يعمل داخل تيليجرام.</p>
-        <p id="user-info">جاري تحميل بيانات المستخدم...</p>
-        <button id="close-button">إغلاق التطبيق</button>
-        <button id="send-data-button">إرسال بيانات للبوت</button>
+        <div id="role-selection-screen" class="screen active">
+            <h1>مرحباً بك في تطبيقنا التعليمي! 👋</h1>
+            <p>اختر دورك للمتابعة:</p>
+            <button id="student-button" class="action-button">أنا طالب</button>
+            <button id="supervisor-button" class="action-button">أنا مشرف</button>
+            <p id="user-info" class="small-text">جاري تحميل بيانات المستخدم...</p>
+        </div>
+
+        <div id="student-menu-screen" class="screen hidden">
+            <h1>أهلاً بك أيها الطالب!</h1>
+            <p>ماذا تريد أن تفعل اليوم؟</p>
+            <button id="view-assignments-button" class="action-button">الاطلاع على الواجبات</button>
+            <button id="browse-materials-button" class="action-button">تصفح المواد الدراسية</button>
+            <button id="contact-supervisor-button" class="action-button">التواصل مع مشرف</button>
+            <button class="back-button" data-target-screen="role-selection-screen">رجوع</button>
+        </div>
+
+        <div id="supervisor-menu-screen" class="screen hidden">
+            <h1>أهلاً بك أيها المشرف!</h1>
+            <p>ماذا تريد أن تفعل اليوم؟</p>
+            <button id="review-progress-button" class="action-button">مراجعة تقدم الطلاب</button>
+            <button id="add-assignment-button" class="action-button">إضافة واجب جديد</button>
+            <button id="send-announcement-button" class="action-button">إرسال إعلان عام</button>
+            <button class="back-button" data-target-screen="role-selection-screen">رجوع</button>
+        </div>
+
+        <div id="select-assignment-material-screen" class="screen hidden">
+            <h1>اختر المادة لعرض الواجبات:</h1>
+            <button class="material-button" data-material="رياضيات">الرياضيات</button>
+            <button class="material-button" data-material="علوم">العلوم</button>
+            <button class="material-button" data-material="لغة_عربية">اللغة العربية</button>
+            <button class="back-button" data-target-screen="student-menu-screen">رجوع</button>
+        </div>
+
+        <div id="add-assignment-form-screen" class="screen hidden">
+            <h1>إضافة واجب جديد:</h1>
+            <label for="assignment-title">عنوان الواجب:</label>
+            <input type="text" id="assignment-title" placeholder="مثلاً: تمارين الوحدة الأولى">
+
+            <label for="due-date">تاريخ التسليم:</label>
+            <input type="date" id="due-date">
+
+            <label for="assignment-material">المادة:</label>
+            <select id="assignment-material">
+                <option value="">اختر مادة</option>
+                <option value="رياضيات">الرياضيات</option>
+                <option value="علوم">العلوم</option>
+                <option value="لغة_عربية">اللغة العربية</option>
+                <option value="تاريخ">التاريخ</option>
+            </select>
+            <button id="submit-assignment-button" class="action-button">إرسال الواجب</button>
+            <button class="back-button" data-target-screen="supervisor-menu-screen">رجوع</button>
+        </div>
+
+        <button id="close-app-button" class="floating-close-button">إغلاق التطبيق</button>
     </div>
 
     <script src="script.js"></script>
